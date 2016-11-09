@@ -1,0 +1,17 @@
+main {
+    width: 100vw;
+    height: 100vh;
+    max-width: 100vh;
+    max-height: 100vw;
+    border: 1px solid black;
+    box-sizing: border-box;
+    text-align: center;
+    position: relative;
+}
+action-box {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 60%;
+    height: 25%;
+}

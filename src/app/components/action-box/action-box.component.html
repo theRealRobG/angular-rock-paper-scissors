@@ -1,0 +1,12 @@
+<div id="action-box">
+    <div id="preliminary-actions" *ngIf="!areMainActionsShown">
+        <button id="fight" (click)="onFight()">Fight</button>
+        <button id="run" (click)="onRun()">Run</button>
+    </div>
+    <div id="main-actions" *ngIf="areMainActionsShown">
+        <button id="rock" (click)="onRock()">Rock</button>
+        <button id="paper" (click)="onPaper()">Paper</button>
+        <button id="scissors" (click)="onScissors()">Scissors</button>
+        <button id="back" (click)="onBack()">Back</button>
+    </div>
+</div>
