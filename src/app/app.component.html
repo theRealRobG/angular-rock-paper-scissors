@@ -1,3 +1,20 @@
 <main>
+    <div id="computer-details">
+        <progress-bar [total]="computerModel.totalLife" [remaining]="computerModel.remainingLife"></progress-bar>
+    </div>
+    <div id="user-details">
+        <progress-bar [total]="userModel.totalLife" [remaining]="userModel.remainingLife"></progress-bar>
+    </div>
     <action-box (userChoice)="onUserChoice($event)"></action-box>
+    <message-box 
+        *ngIf="isMessageShowing"
+        (dismissMessage)="onDismissMessage()"
+        [computerChoice]="computerChoice"
+        [userOutcome]="userOutcome">
+    </message-box>
 </main>
+<div id="game-over-message" *ngIf="isGameOver">
+    <h2>Game Over</h2>
+    <h1>{{gameOverMessage}}</h1>
+    <button (click)="onRestart()">Play Again</button>
+</div>

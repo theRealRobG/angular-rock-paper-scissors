@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { ActionBoxComponent } from './components';
+import { ActionBoxComponent, ProgressBarComponent, MessageBoxComponent } from './components';
 
 @NgModule({
     imports: [
@@ -10,7 +10,9 @@ import { ActionBoxComponent } from './components';
     ],
     declarations: [
         AppComponent,
-        ActionBoxComponent
+        ActionBoxComponent,
+        ProgressBarComponent,
+        MessageBoxComponent
     ],
     bootstrap: [AppComponent]
 })

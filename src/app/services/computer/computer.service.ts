@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { Player, PlayerModel } from '../../interfaces/player';
-import { Choice } from '../../choice';
+import { Choice } from '../../enums';
 
 const choicesArray: Array<Choice> = [Choice.ROCK, Choice.PAPER, Choice.SCISSORS];
 

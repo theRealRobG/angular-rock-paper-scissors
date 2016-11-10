@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import '../../public/css/styles.css';
 
-import { ComputerService, UserService } from './services'
-import { Choice } from './choice';
+import { ComputerService, UserService } from './services';
+import { PlayerModel } from './interfaces/player';
+import { Choice, Outcome } from './enums';
 
 @Component({
     selector: 'my-app',
@@ -11,46 +12,70 @@ import { Choice } from './choice';
     providers: [ComputerService, UserService]
 })
 export class AppComponent {
+    public computerModel: PlayerModel;
+    public userModel: PlayerModel;
+    public isGameOver: boolean;
+    public gameOverMessage: string;
+    public computerChoice: Choice;
+    public userOutcome: Outcome;
+    public isMessageShowing = false;
+
     constructor(
         private computerService: ComputerService,
         private userService: UserService
-    ) {}
+    ) {
+        this.computerModel = computerService.model;
+        this.userModel = userService.model;
+    }
 
     public onUserChoice(userChoice: Choice): void {
-        let computerChoice = this.computerService.getChoice();
-        if (userChoice === computerChoice) {
+        this.computerChoice = this.computerService.getChoice();
+        if (userChoice === this.computerChoice) {
             return this.onDraw();
         }
-        if (this.isStrongerThan(userChoice, computerChoice)) {
+        if (this.isStrongerThan(userChoice, this.computerChoice)) {
             return this.onWin();
         }
         return this.onLose();
     }
 
+    public onDismissMessage(): void {
+        this.isMessageShowing = false;
+    }
+
     public onWin(): void {
-        console.log('YOU WIN!');
+        this.userOutcome = Outcome.WIN;
+        this.isMessageShowing = true;
         this.computerService.decrementLife();
         this.checkIsGameOver();
         return;
     }
 
     public onLose(): void {
-        console.log('YOU LOSE!');
+        this.userOutcome = Outcome.LOSE;
+        this.isMessageShowing = true;
         this.userService.decrementLife();
         this.checkIsGameOver();
         return;
     }
 
     public onDraw(): void {
-        console.log('A DRAW!');
+        this.userOutcome = Outcome.DRAW;
+        this.isMessageShowing = true;
         return;
     }
 
     public onGameOver(): void {
-        console.log('GAME OVER!');
+        this.gameOverMessage = `You ${this.userModel.remainingLife === 0 ? 'Lose' : 'Win'}!`;
+        this.isGameOver = true;
+        return;
+    }
+
+    public onRestart(): void {
+        this.isMessageShowing = false;
+        this.isGameOver = false;
         this.computerService.resetLife();
         this.userService.resetLife();
-        return;
     }
 
     private isStrongerThan(firstChoice: Choice, secondChoice: Choice): boolean {

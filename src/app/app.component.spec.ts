@@ -1,11 +1,18 @@
 import { TestBed } from '@angular/core/testing';
 
 import { AppComponent } from './app.component';
-import { ActionBoxComponent } from './components'
+import { ActionBoxComponent, MessageBoxComponent, ProgressBarComponent } from './components'
 
 describe('App', () => {
     beforeEach(() => {
-        TestBed.configureTestingModule({ declarations: [AppComponent, ActionBoxComponent] });
+        TestBed.configureTestingModule({
+            declarations: [
+                AppComponent,
+                ActionBoxComponent,
+                MessageBoxComponent,
+                ProgressBarComponent
+            ]
+        });
     });
     
     it('should work', () => {

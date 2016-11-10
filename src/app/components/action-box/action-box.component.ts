@@ -1,6 +1,6 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 
-import { Choice } from '../../choice';
+import { Choice } from '../../enums';
 
 @Component({
     selector: 'action-box',
@@ -16,19 +16,22 @@ export class ActionBoxComponent {
     }
 
     public onRun(): void {
-        
+        location.reload();
     }
 
     public onRock(): void {
         this.userChoice.emit(Choice.ROCK);
+        this.onBack();
     }
 
     public onPaper(): void {
         this.userChoice.emit(Choice.PAPER);
+        this.onBack();
     }
 
     public onScissors(): void {
         this.userChoice.emit(Choice.SCISSORS);
+        this.onBack();
     }
 
     public onBack(): void {
