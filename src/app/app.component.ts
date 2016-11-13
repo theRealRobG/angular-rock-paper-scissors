@@ -1,28 +1,27 @@
 import { Component } from '@angular/core';
 import '../../public/css/styles.css';
 
-import { ComputerService, UserService } from './services';
-import { PlayerModel } from './interfaces/player';
+import { ComputerService, HumanService, PlayerModel } from './services';
 import { Choice, Outcome } from './enums';
 
 @Component({
     selector: 'my-app',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.css'],
-    providers: [ComputerService, UserService]
+    providers: [ComputerService, HumanService]
 })
 export class AppComponent {
     public computerModel: PlayerModel;
     public userModel: PlayerModel;
-    public isGameOver: boolean;
     public gameOverMessage: string;
     public computerChoice: Choice;
     public userOutcome: Outcome;
+    public isGameOver = false;
     public isMessageShowing = false;
 
     constructor(
         private computerService: ComputerService,
-        private userService: UserService
+        private userService: HumanService
     ) {
         this.computerModel = computerService.model;
         this.userModel = userService.model;

@@ -1,13 +1,17 @@
-import { Injectable } from '@angular/core';
+export interface PlayerModel {
+    totalLife: number;
+    remainingLife: number;
+}
 
-import { Player, PlayerModel } from '../../interfaces/player';
-
-@Injectable()
-export class UserService implements Player {
+export class Player {
     public model: PlayerModel = {
         totalLife: 3,
         remainingLife: 3
     };
+
+    public setTotalLife(value: number): void {
+        this.model.totalLife = value;
+    }
 
     public getRemainingLife(): number {
         return this.model.remainingLife;
@@ -18,6 +22,6 @@ export class UserService implements Player {
     }
 
     public resetLife(): void {
-        this.model.remainingLife = 3;
+        this.model.remainingLife = this.model.totalLife;
     }
 }
