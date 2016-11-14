@@ -2,4 +2,35 @@
     border: 1px solid black;
     height: 100%;
     width: 100%;
+    text-align: left;
+}
+#main-actions {
+    height: 100%;
+}
+.buttons-column {
+    width: 40%;
+    height: 100%;
+    display: inline-block;
+    position: relative;
+}
+button {
+    display: block;
+    outline: none;
+    user-select: none;
+    background: none;
+    border: none;
+    font-size: 20px;
+    margin-top: 10%;
+    margin-left: 10%;
+    cursor: pointer;
+    font-family: "Lucida Sans Typewriter","Lucida Console",monaco,"Bitstream Vera Sans Mono",monospace;
+}
+#main-actions button {
+    margin-left: 25%;
+    margin-top: 25%;
+}
+button:hover::before {
+    content: '▶';
+    position: absolute;
+    left: 10px;
 }
