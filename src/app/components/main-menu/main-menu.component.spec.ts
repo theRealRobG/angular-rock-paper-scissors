@@ -52,15 +52,23 @@ describe('Action Box', () => {
         router = fixture.debugElement.injector.get(Router);
     });
 
-    it('should not go anywhere if the user choice is not a number', () => {
+    it('should set up the game with default values if no user choice is passed', () => {
+        mainMenuComponent.userChoice = undefined;
+        const computerSetTotalLifeSpy = spyOn(computerService, 'setTotalLife');
+        const humanSetTotalLifeSpy = spyOn(humanService, 'setTotalLife');
+        const computerResetLifeSpy = spyOn(computerService, 'resetLife');
+        const humanResetLifeSpy = spyOn(humanService, 'resetLife')
         const routerSpy = spyOn(router, 'navigateByUrl');
-        mainMenuComponent.userChoice = 'jim';
         mainMenuComponent.onStartGame();
-        expect(routerSpy).not.toHaveBeenCalled();
+        expect(computerSetTotalLifeSpy).toHaveBeenCalledWith(3);
+        expect(humanSetTotalLifeSpy).toHaveBeenCalledWith(3);
+        expect(computerResetLifeSpy).toHaveBeenCalled();
+        expect(humanResetLifeSpy).toHaveBeenCalled();
+        expect(routerSpy).toHaveBeenCalledWith('main-game');
     });
 
     it('set up the game and navigate on start', () => {
-        mainMenuComponent.userChoice = '5';
+        mainMenuComponent.userChoice = 5;
         const computerSetTotalLifeSpy = spyOn(computerService, 'setTotalLife');
         const humanSetTotalLifeSpy = spyOn(humanService, 'setTotalLife');
         const computerResetLifeSpy = spyOn(computerService, 'resetLife');
