@@ -81,8 +81,8 @@ message-box {
     position: absolute;
     left: 0;
     right: 0;
-    bottom: 82px;
+    bottom: 35%;
 }
 #computer-details .player-name {
-    bottom: 61px;
+    bottom: 30%;
 }
