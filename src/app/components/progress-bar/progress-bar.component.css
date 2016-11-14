@@ -1,7 +1,17 @@
-progress::-webkit-progress-bar {
+progress {
+    position: relative;
+    width: 75%;
+}
+progress:-webkit-progress-bar {
     background: none;
 }
-progress::-webkit-progress-value {
+progress:-webkit-progress-value {
     background: green;
     border-radius: 20px;
+}
+progress::before {
+    content: 'HP: ';
+    font-weight: bold;
+    position: absolute;
+    left: -35px;
 }

@@ -19,6 +19,12 @@ main {
     right: 0;
     top: 0;
 }
+#game-over-message button {
+    position: relative;
+}
+#game-over-message button:hover::before {
+    left: -40px;
+}
 action-box {
     position: absolute;
     right: 0;
@@ -36,8 +42,6 @@ message-box {
     height: 35%;
 }
 #computer-details {
-    border: 1px solid black;
-    box-sizing: border-box;
     position: absolute;
     top: 0;
     left: 0;
@@ -45,11 +49,35 @@ message-box {
     height: 30%;
 }
 #user-details {
-    border: 1px solid black;
-    box-sizing: border-box;
     position: absolute;
     right : 0;
     bottom: 35%;
     width: 60%;
     height: 35%;
+}
+.styled-divider {
+    position: absolute;
+    border-bottom: 3px solid black;
+    border-right: 3px solid black;
+    padding: 5px;
+    padding-right: 20px;
+    box-sizing: border-box;
+    width: 80%;
+    left: 10%;
+    bottom: 10%;
+    text-align: right;
+}
+#computer-details .styled-divider {
+    border-right: none;
+    border-left: 3px solid black;
+    padding-right: 5px;
+}
+.player-name {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 82px;
+}
+#computer-details .player-name {
+    bottom: 61px;
 }

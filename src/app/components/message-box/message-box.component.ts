@@ -21,7 +21,7 @@ export class MessageBoxComponent {
 
     public getMessage(): string {
         this.buildMessageSentences();
-        return `${this.choiceSentence} ${this.outcomeSentence}`;
+        return `${this.choiceSentence} ${this.outcomeSentence}`.toUpperCase();
     }
 
     public onDismissMessage(): void {

@@ -65,7 +65,7 @@ export class AppComponent {
     }
 
     public onGameOver(): void {
-        this.gameOverMessage = `You ${this.userModel.remainingLife === 0 ? 'Lose' : 'Win'}!`;
+        this.gameOverMessage = `You ${this.userModel.remainingLife === 0 ? 'Lose' : 'Win'}!`.toUpperCase();
         this.isGameOver = true;
         return;
     }

@@ -1,9 +1,16 @@
 <main>
     <div id="computer-details">
-        <progress-bar [total]="computerModel.totalLife" [remaining]="computerModel.remainingLife"></progress-bar>
+        <div class="player-name">COMPUTER</div>
+        <div class="styled-divider">
+            <progress-bar [total]="computerModel.totalLife" [remaining]="computerModel.remainingLife"></progress-bar>
+        </div>
     </div>
     <div id="user-details">
-        <progress-bar [total]="userModel.totalLife" [remaining]="userModel.remainingLife"></progress-bar>
+        <div class="player-name">HUMAN</div>
+        <div class="styled-divider">
+            <progress-bar [total]="userModel.totalLife" [remaining]="userModel.remainingLife"></progress-bar>
+            <div class="life-indicator">{{userModel.remainingLife}} / {{userModel.totalLife}}</div>
+        </div>
     </div>
     <action-box (userChoice)="onUserChoice($event)"></action-box>
     <message-box 
@@ -14,7 +21,7 @@
     </message-box>
 </main>
 <div id="game-over-message" *ngIf="isGameOver">
-    <h2>Game Over</h2>
+    <h2>GAME OVER</h2>
     <h1>{{gameOverMessage}}</h1>
-    <button (click)="onRestart()">Play Again</button>
+    <button (click)="onRestart()">PLAY AGAIN</button>
 </div>

@@ -1,4 +1,19 @@
 body {
     margin: 0;
     background-color: black;
+    font-family: "Lucida Sans Typewriter","Lucida Console",monaco,"Bitstream Vera Sans Mono",monospace;
+}
+button {
+    outline: none;
+    user-select: none;
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    font-family: "Lucida Sans Typewriter","Lucida Console",monaco,"Bitstream Vera Sans Mono",monospace;
+}
+button:hover::before {
+    content: '▶';
+    position: absolute;
+    left: 10px;
 }
