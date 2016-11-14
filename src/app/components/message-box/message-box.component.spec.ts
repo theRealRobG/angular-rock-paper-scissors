@@ -48,9 +48,9 @@ describe('Message Box', () => {
         const paperInitialSentence = getInitialMessageBoxSentence();
         messageBoxComponent.computerChoice = Choice.SCISSORS;
         const scissorsInitialSentence = getInitialMessageBoxSentence();
-        expect(rockInitialSentence.indexOf('rock') > -1).toBe(true);
-        expect(paperInitialSentence.indexOf('paper') > -1).toBe(true);
-        expect(scissorsInitialSentence.indexOf('scissors') > -1).toBe(true);
+        expect(rockInitialSentence.indexOf('ROCK') > -1).toBe(true);
+        expect(paperInitialSentence.indexOf('PAPER') > -1).toBe(true);
+        expect(scissorsInitialSentence.indexOf('SCISSORS') > -1).toBe(true);
     });
 
     it('should always have the same final sentence on a draw', () => {
