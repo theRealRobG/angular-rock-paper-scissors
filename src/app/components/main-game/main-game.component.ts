@@ -1,16 +1,16 @@
 import { Component } from '@angular/core';
-import '../../public/css/styles.css';
+import { Router } from '@angular/router';
+import '../../../../public/css/styles.css';
 
-import { ComputerService, HumanService, PlayerModel } from './services';
-import { Choice, Outcome } from './enums';
+import { ComputerService, HumanService, PlayerModel } from '../../services';
+import { Choice, Outcome } from '../../enums';
 
 @Component({
-    selector: 'my-app',
-    templateUrl: './app.component.html',
-    styleUrls: ['./app.component.css'],
-    providers: [ComputerService, HumanService]
+    selector: 'main-game',
+    templateUrl: './main-game.component.html',
+    styleUrls: ['./main-game.component.css']
 })
-export class AppComponent {
+export class MainGameComponent {
     public computerModel: PlayerModel;
     public userModel: PlayerModel;
     public gameOverMessage: string;
@@ -21,7 +21,8 @@ export class AppComponent {
 
     constructor(
         private computerService: ComputerService,
-        private userService: HumanService
+        private userService: HumanService,
+        private router: Router
     ) {
         this.computerModel = computerService.model;
         this.userModel = userService.model;
@@ -36,6 +37,10 @@ export class AppComponent {
             return this.onWin();
         }
         return this.onLose();
+    }
+
+    public goToMainMenu(): void {
+        this.router.navigateByUrl('main-menu');
     }
 
     public onDismissMessage(): void {

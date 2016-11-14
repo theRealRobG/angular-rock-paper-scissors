@@ -1,0 +1,41 @@
+main {
+    width: 100vw;
+    height: 100vh;
+    max-width: 100vh;
+    max-height: 100vw;
+    background-color: #FBE6FA;
+    border: 1px solid black;
+    box-sizing: border-box;
+    text-align: center;
+    margin: auto;
+}
+main {
+    position: relative;
+}
+.game-title {
+    height: 30%;
+    border: 3px double black;
+    width: 80%;
+    margin: 50px auto 10px;
+    display: flex;
+    align-content: center;
+    align-items: center;
+}
+.game-title h1 {
+    margin: auto;
+    user-select: none;
+}
+.game-settings {
+    margin: 40px;
+}
+input {
+    text-align: center;
+    width: 25px;
+    outline: none;
+}
+button {
+    position: relative;
+}
+button:hover::before {
+    left: -40px;
+}

@@ -1,12 +1,17 @@
 import { TestBed, ComponentFixture } from '@angular/core/testing';
+import { Router } from '@angular/router';
 
-import { AppComponent } from './app.component';
-import { ActionBoxComponent, MessageBoxComponent, ProgressBarComponent } from './components';
-import { ComputerService, HumanService } from './services';
-import { Choice, Outcome } from './enums';
+import { MainGameComponent } from './main-game.component';
+import { ActionBoxComponent, MessageBoxComponent, ProgressBarComponent } from '..';
+import { ComputerService, HumanService } from '../../services';
+import { Choice, Outcome } from '../../enums';
 
-let fixture: ComponentFixture<AppComponent>;
-let appComponent: AppComponent;
+let fixture: ComponentFixture<MainGameComponent>;
+let appComponent: MainGameComponent;
+
+const mockRouter = {
+    navigateByUrl() {}
+};
 
 describe('App', () => {
     describe('On initialisation', () => {
@@ -21,17 +26,18 @@ describe('App', () => {
             };
             TestBed.configureTestingModule({
                 declarations: [
-                    AppComponent,
+                    MainGameComponent,
                     ActionBoxComponent,
                     MessageBoxComponent,
                     ProgressBarComponent
                 ],
                 providers: [
                     { provide: ComputerService, useValue: mockService },
-                    { provide: HumanService, useValue: mockService }
+                    { provide: HumanService, useValue: mockService },
+                    { provide: Router, useValue: mockRouter}
                 ]
             });
-            fixture = TestBed.createComponent(AppComponent);
+            fixture = TestBed.createComponent(MainGameComponent);
             appComponent = fixture.componentInstance;
         });
 
@@ -62,21 +68,30 @@ describe('App', () => {
                     totalLife: START_LIFE,
                     remainingLife: START_LIFE
                 },
-                decrementLife() { mockService.model.remainingLife-- }
+                decrementLife() { mockService.model.remainingLife-- },
+                setTotalLife(value: number) {},
+                getRemainingLife(): number {
+                    return this.model.remainingLife;
+                },
+                resetLife() {
+                    this.model.remainingLife = this.model.totalLife;
+                },
+                getChoice() {}
             };
             TestBed.configureTestingModule({
                 declarations: [
-                    AppComponent,
+                    MainGameComponent,
                     ActionBoxComponent,
                     MessageBoxComponent,
                     ProgressBarComponent
                 ],
                 providers: [
                     { provide: ComputerService, useValue: mockService },
-                    { provide: HumanService, useValue: mockService }
+                    { provide: HumanService, useValue: mockService },
+                    { provide: Router, useValue: mockRouter}
                 ]
             });
-            fixture = TestBed.createComponent(AppComponent);
+            fixture = TestBed.createComponent(MainGameComponent);
             appComponent = fixture.componentInstance;
             computerService = fixture.debugElement.injector.get(ComputerService);
             userService = fixture.debugElement.injector.get(HumanService);

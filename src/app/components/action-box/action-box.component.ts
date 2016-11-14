@@ -1,4 +1,5 @@
 import { Component, Output, EventEmitter } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { Choice } from '../../enums';
 
@@ -11,12 +12,14 @@ export class ActionBoxComponent {
     public areMainActionsShown = false;
     @Output() public userChoice = new EventEmitter<Choice>();
 
+    constructor(private router: Router) { }
+
     public onFight(): void {
         this.areMainActionsShown = true;
     }
 
     public onRun(): void {
-        location.reload();
+        this.router.navigateByUrl('main-menu');
     }
 
     public onRock(): void {

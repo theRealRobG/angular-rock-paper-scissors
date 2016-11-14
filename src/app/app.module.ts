@@ -1,18 +1,36 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 
-import { AppComponent } from './app.component';
-import { ActionBoxComponent, ProgressBarComponent, MessageBoxComponent } from './components';
+import { AppRoutingModule } from './app-routing.module';
+
+import { AppComponent } from './components/app.component';
+import {
+    MainGameComponent,
+    MainMenuComponent,
+    ActionBoxComponent,
+    ProgressBarComponent,
+    MessageBoxComponent
+} from './components';
+import { ComputerService, HumanService } from './services';
 
 @NgModule({
     imports: [
-        BrowserModule
+        BrowserModule,
+        FormsModule,
+        AppRoutingModule
     ],
     declarations: [
         AppComponent,
+        MainMenuComponent,
+        MainGameComponent,
         ActionBoxComponent,
         ProgressBarComponent,
         MessageBoxComponent
+    ],
+    providers: [
+        ComputerService,
+        HumanService
     ],
     bootstrap: [AppComponent]
 })

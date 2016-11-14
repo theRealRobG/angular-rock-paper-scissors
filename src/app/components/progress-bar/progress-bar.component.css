@@ -2,10 +2,10 @@ progress {
     position: relative;
     width: 75%;
 }
-progress:-webkit-progress-bar {
+progress::-webkit-progress-bar {
     background: none;
 }
-progress:-webkit-progress-value {
+progress::-webkit-progress-value {
     background: green;
     border-radius: 20px;
 }

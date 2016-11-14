@@ -1,15 +1,22 @@
 import { TestBed, ComponentFixture } from '@angular/core/testing';
+import { Router } from '@angular/router';
 
 import { ActionBoxComponent } from './action-box.component';
 import { Choice } from '../../enums';
 
 let actionBoxComponent: ActionBoxComponent;
+const mockRouter = {
+    navigateByUrl() {}
+};
 
 describe('Action Box', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
             declarations: [
                 ActionBoxComponent
+            ],
+            providers: [
+                { provide: Router, useValue: mockRouter}
             ]
         });
         actionBoxComponent = TestBed.createComponent(ActionBoxComponent).componentInstance;
