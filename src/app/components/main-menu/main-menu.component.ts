@@ -11,7 +11,8 @@ const DEFAULT_STARTING_LIFE = 3;
     styleUrls: ['./main-menu.component.css']
 })
 export class MainMenuComponent {
-    public noOfLives = DEFAULT_STARTING_LIFE;
+    public userChoice: string;
+    private noOfLives = DEFAULT_STARTING_LIFE;
 
     constructor(
         private computerService: ComputerService,
@@ -20,8 +21,13 @@ export class MainMenuComponent {
     ) { }
 
     public onStartGame(): void {
-        if (!this.noOfLives) {
+        if (!parseInt(this.userChoice) && parseInt(this.userChoice) !== 0) {
+            return;
+        }
+        if (!this.userChoice) {
             this.noOfLives = DEFAULT_STARTING_LIFE;
+        } else {
+            this.noOfLives = parseInt(this.userChoice);
         }
         this.computerService.setTotalLife(this.noOfLives);
         this.humanService.setTotalLife(this.noOfLives);
