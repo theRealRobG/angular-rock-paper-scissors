@@ -42,27 +42,51 @@ describe('Message Box', () => {
 
     it('should contain the computer choice in the first sentence', () => {
         messageBoxComponent.userOutcome = Outcome.DRAW;
+
         messageBoxComponent.computerChoice = Choice.ROCK;
         const rockInitialSentence = getInitialMessageBoxSentence();
+
         messageBoxComponent.computerChoice = Choice.PAPER;
         const paperInitialSentence = getInitialMessageBoxSentence();
+
         messageBoxComponent.computerChoice = Choice.SCISSORS;
         const scissorsInitialSentence = getInitialMessageBoxSentence();
+
+        messageBoxComponent.computerChoice = Choice.SPOCK;
+        const spockInitialSentence = getInitialMessageBoxSentence();
+
+        messageBoxComponent.computerChoice = Choice.LIZARD;
+        const lizardInitialSentence = getInitialMessageBoxSentence();
+
         expect(rockInitialSentence.indexOf('ROCK') > -1).toBe(true);
         expect(paperInitialSentence.indexOf('PAPER') > -1).toBe(true);
         expect(scissorsInitialSentence.indexOf('SCISSORS') > -1).toBe(true);
+        expect(spockInitialSentence.indexOf('SPOCK') > -1).toBe(true);
+        expect(lizardInitialSentence.indexOf('LIZARD') > -1).toBe(true);
     });
 
     it('should always have the same final sentence on a draw', () => {
         messageBoxComponent.userOutcome = Outcome.DRAW;
+
         messageBoxComponent.computerChoice = Choice.ROCK;
         const rockRestOfSentence = getRestOfMessageBoxSentence();
+
         messageBoxComponent.computerChoice = Choice.PAPER;
         const paperRestOfSentence = getRestOfMessageBoxSentence();
+
         messageBoxComponent.computerChoice = Choice.SCISSORS;
         const scissorsRestOfSentence = getRestOfMessageBoxSentence();
+
+        messageBoxComponent.computerChoice = Choice.SPOCK;
+        const spockRestOfSentence = getRestOfMessageBoxSentence();
+
+        messageBoxComponent.computerChoice = Choice.LIZARD;
+        const lizardRestOfSentence = getRestOfMessageBoxSentence();
+
         expect(rockRestOfSentence).toEqual(paperRestOfSentence);
         expect(rockRestOfSentence).toEqual(scissorsRestOfSentence);
         expect(paperRestOfSentence).toEqual(scissorsRestOfSentence);
+        expect(spockRestOfSentence).toEqual(scissorsRestOfSentence);
+        expect(lizardRestOfSentence).toEqual(spockRestOfSentence);
     });
 });

@@ -15,6 +15,7 @@ export class MainGameComponent {
     public userModel: PlayerModel;
     public gameOverMessage: string;
     public computerChoice: Choice;
+    public userChoice: Choice;
     public userOutcome: Outcome;
     public isGameOver = false;
     public isMessageShowing = false;
@@ -29,6 +30,7 @@ export class MainGameComponent {
     }
 
     public onUserChoice(userChoice: Choice): void {
+        this.userChoice = userChoice;
         this.computerChoice = this.computerService.getChoice();
         if (userChoice === this.computerChoice) {
             return this.onDraw();
@@ -88,11 +90,15 @@ export class MainGameComponent {
         }
         switch(firstChoice) {
             case Choice.ROCK:
-                return secondChoice === Choice.SCISSORS;
+                return secondChoice === Choice.SCISSORS || secondChoice === Choice.LIZARD;
             case Choice.PAPER:
-                return secondChoice === Choice.ROCK;
+                return secondChoice === Choice.ROCK || secondChoice === Choice.SPOCK;
             case Choice.SCISSORS:
-                return secondChoice === Choice.PAPER;
+                return secondChoice === Choice.PAPER || secondChoice === Choice.LIZARD;
+            case Choice.LIZARD:
+                return secondChoice === Choice.PAPER || secondChoice === Choice.SPOCK;
+            case Choice.SPOCK:
+                return secondChoice === Choice.SCISSORS || secondChoice === Choice.ROCK;
         }
     }
 

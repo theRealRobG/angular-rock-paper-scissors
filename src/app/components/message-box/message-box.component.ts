@@ -7,6 +7,7 @@ const ROCK_WIN_MESSAGE = 'The rock has smashed the scissors to pieces.';
 const PAPER_WIN_MESSAGE = 'Paper covers the rock and it is no more.';
 const SCISSORS_WIN_MESSAGE = 'The paper has been shredded by the snips of the scissors.';
 
+
 @Component({
     selector: 'message-box',
     templateUrl: './message-box.component.html',
@@ -14,6 +15,7 @@ const SCISSORS_WIN_MESSAGE = 'The paper has been shredded by the snips of the sc
 })
 export class MessageBoxComponent {
     @Input() public computerChoice: Choice;
+    @Input() public userChoice: Choice;
     @Input() public userOutcome: Outcome;
     @Output() public dismissMessage = new EventEmitter<void>();
     private choiceSentence: string;
@@ -42,6 +44,14 @@ export class MessageBoxComponent {
             case Choice.SCISSORS:
                 this.choiceSentence = `${defaultStart} scissors.`;
                 this.outcomeSentence = this.getScissorsOutcomeSentence();
+                break;
+            case Choice.SPOCK:
+                this.choiceSentence = `${defaultStart} spock.`;
+                this.outcomeSentence = this.getSpockOutcomeSentence();
+                break;
+            case Choice.LIZARD:
+                this.choiceSentence = `${defaultStart} lizard.`;
+                this.outcomeSentence = this.getLizardOutcomeSentence();
                 break;
             default:
                 this.choiceSentence = '';
@@ -74,5 +84,13 @@ export class MessageBoxComponent {
             return ROCK_WIN_MESSAGE;
         }
         return SCISSORS_WIN_MESSAGE;
+    }
+
+    private getSpockOutcomeSentence(): string {
+        return `Who knows! ${this.userOutcome}`;
+    }
+
+    private getLizardOutcomeSentence(): string {
+        return `I have no idea! ${this.userOutcome}`;
     }
 }

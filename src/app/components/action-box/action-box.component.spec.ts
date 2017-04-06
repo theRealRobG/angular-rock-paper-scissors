@@ -51,4 +51,16 @@ describe('Action Box', () => {
         actionBoxComponent.onScissors();
         expect(userChoiceSpy).toHaveBeenCalledWith(Choice.SCISSORS);
     });
-})
+
+    it('should emit a user choice event with scissors on choosing scissors', () => {
+        const userChoiceSpy = spyOn(actionBoxComponent.userChoice, 'emit');
+        actionBoxComponent.onSpock();
+        expect(userChoiceSpy).toHaveBeenCalledWith(Choice.SPOCK);
+    });
+
+    it('should emit a user choice event with scissors on choosing scissors', () => {
+        const userChoiceSpy = spyOn(actionBoxComponent.userChoice, 'emit');
+        actionBoxComponent.onLizard();
+        expect(userChoiceSpy).toHaveBeenCalledWith(Choice.LIZARD);
+    });
+});

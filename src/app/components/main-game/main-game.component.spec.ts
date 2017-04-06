@@ -209,5 +209,19 @@ describe('App', () => {
             appComponent.onUserChoice(Choice.SCISSORS);
             expect(onWinSpy).toHaveBeenCalled();
         });
+
+        it('should register a win for scissors beating lizard', () => {
+            const onWinSpy = spyOn(appComponent, 'onWin');
+            spyOn(computerService, 'getChoice').and.returnValue(Choice.LIZARD); 
+            appComponent.onUserChoice(Choice.SCISSORS);
+            expect(onWinSpy).toHaveBeenCalled();
+        });
+
+        it('should register a lose for spock losing to paper', () => {
+            const onLoseSpy = spyOn(appComponent, 'onLose');
+            spyOn(computerService, 'getChoice').and.returnValue(Choice.PAPER); 
+            appComponent.onUserChoice(Choice.SPOCK);
+            expect(onLoseSpy).toHaveBeenCalled();
+        });
     });
 });

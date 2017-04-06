@@ -23,21 +23,31 @@ export class ActionBoxComponent {
     }
 
     public onRock(): void {
-        this.userChoice.emit(Choice.ROCK);
-        this.onBack();
+        this.onChoice(Choice.ROCK);
     }
 
     public onPaper(): void {
-        this.userChoice.emit(Choice.PAPER);
-        this.onBack();
+        this.onChoice(Choice.PAPER);
     }
 
     public onScissors(): void {
-        this.userChoice.emit(Choice.SCISSORS);
-        this.onBack();
+        this.onChoice(Choice.SCISSORS);
+    }
+
+    public onSpock(): void {
+        this.onChoice(Choice.SPOCK);
+    }
+
+    public onLizard(): void {
+        this.onChoice(Choice.LIZARD);
     }
 
     public onBack(): void {
         this.areMainActionsShown = false;
+    }
+
+    private onChoice(choice: Choice): void {
+        this.userChoice.emit(choice);
+        this.onBack();
     }
 }

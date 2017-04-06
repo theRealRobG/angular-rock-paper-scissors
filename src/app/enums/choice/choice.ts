@@ -1,5 +1,7 @@
 export enum Choice {
     ROCK,
     PAPER,
-    SCISSORS
+    SCISSORS,
+    SPOCK,
+    LIZARD
 }
