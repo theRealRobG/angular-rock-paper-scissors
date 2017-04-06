@@ -20,9 +20,3 @@
         [userOutcome]="userOutcome">
     </message-box>
 </main>
-<div id="game-over-message" *ngIf="isGameOver">
-    <h2>GAME OVER</h2>
-    <h1>{{gameOverMessage}}</h1>
-    <button (click)="onRestart()">PLAY AGAIN</button>
-    <button (click)="goToMainMenu()">MAIN MENU</button>
-</div>

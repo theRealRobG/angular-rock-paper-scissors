@@ -48,10 +48,6 @@ describe('App', () => {
             expect(appComponent.userModel.remainingLife).toBe(START_LIFE);
         });
 
-        it('should not be displaying the gameOverMessage', () => {
-            expect(appComponent.isGameOver).toBe(false);
-        });
-
         it('should not be displaying any info message', () => {
             expect(appComponent.isMessageShowing).toBe(false);
         });
@@ -154,26 +150,26 @@ describe('App', () => {
             expect(appComponent.isMessageShowing).toBe(true);
         });
 
-        it('should set the game over message when the game is over', () => {
-            expect(appComponent.gameOverMessage).toBe(undefined);
-            expect(appComponent.isGameOver).toBe(false);
-            appComponent.onGameOver();
-            expect(appComponent.isGameOver).toBe(true);
-            expect(appComponent.gameOverMessage).not.toBe(undefined);
-            expect(typeof appComponent.gameOverMessage === 'string').toBe(true);
-            expect(appComponent.gameOverMessage.length).toBeGreaterThan(0);
-        });
-
-        it('should remove all messaging and reset the life on a restart', () => {
+        it('should remove the message and navigate to game-over/lose on game over and lose', () => {
+            const router = fixture.debugElement.injector.get(Router);
+            const routerNavigateByUrlSpy = spyOn(router, 'navigateByUrl');
             appComponent.isMessageShowing = true;
-            appComponent.isGameOver = true;
             appComponent.computerModel.remainingLife = 1;
             appComponent.userModel.remainingLife = 0;
-            appComponent.onRestart();
+            appComponent.onGameOver();
             expect(appComponent.isMessageShowing).toBe(false);
-            expect(appComponent.isGameOver).toBe(false);
-            expect(appComponent.computerModel.remainingLife).toBe(START_LIFE);
-            expect(appComponent.userModel.remainingLife).toBe(START_LIFE);
+            expect(routerNavigateByUrlSpy).toHaveBeenCalledWith('game-over/lose');
+        });
+
+        it('should remove the message and navigate to game-over/win on game over and win', () => {
+            const router = fixture.debugElement.injector.get(Router);
+            const routerNavigateByUrlSpy = spyOn(router, 'navigateByUrl');
+            appComponent.isMessageShowing = true;
+            appComponent.computerModel.remainingLife = 0;
+            appComponent.userModel.remainingLife = 1;
+            appComponent.onGameOver();
+            expect(appComponent.isMessageShowing).toBe(false);
+            expect(routerNavigateByUrlSpy).toHaveBeenCalledWith('game-over/win');
         });
 
         it('should get the computer choice on a user choice', () => {

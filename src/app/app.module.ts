@@ -8,6 +8,7 @@ import { AppComponent } from './components/app.component';
 import {
     MainGameComponent,
     MainMenuComponent,
+    GameOverComponent,
     ActionBoxComponent,
     ProgressBarComponent,
     MessageBoxComponent
@@ -24,6 +25,7 @@ import { ComputerService, HumanService } from './services';
         AppComponent,
         MainMenuComponent,
         MainGameComponent,
+        GameOverComponent,
         ActionBoxComponent,
         ProgressBarComponent,
         MessageBoxComponent

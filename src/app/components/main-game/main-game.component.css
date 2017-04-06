@@ -1,4 +1,4 @@
-main, #game-over-message {
+main {
     width: 100vw;
     height: 100vh;
     max-width: 100vh;
@@ -8,27 +8,7 @@ main, #game-over-message {
     box-sizing: border-box;
     text-align: center;
     margin: auto;
-}
-main {
     position: relative;
-}
-#game-over-message {
-    z-index: 2;
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-}
-#game-over-message h2 {
-    margin-top: calc(50% - 93px);
-}
-#game-over-message button {
-    position: relative;
-    display: block;
-    margin: 20px auto;
-}
-#game-over-message button:hover::before {
-    left: -40px;
 }
 action-box {
     position: absolute;

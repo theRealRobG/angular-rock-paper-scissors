@@ -2,6 +2,7 @@ import { Component, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Choice } from '../../enums';
+import { mainMenuRoute } from '../../constants';
 
 @Component({
     selector: 'action-box',
@@ -19,7 +20,7 @@ export class ActionBoxComponent {
     }
 
     public onRun(): void {
-        this.router.navigateByUrl('main-menu');
+        this.router.navigateByUrl(mainMenuRoute);
     }
 
     public onRock(): void {

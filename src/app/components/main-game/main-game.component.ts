@@ -4,6 +4,7 @@ import '../../../../public/css/styles.css';
 
 import { ComputerService, HumanService, PlayerModel } from '../../services';
 import { Choice, Outcome } from '../../enums';
+import { mainMenuRoute, gameOverRoute, victoryOutcome, lossOutcome } from '../../constants';
 
 @Component({
     selector: 'main-game',
@@ -16,7 +17,6 @@ export class MainGameComponent {
     public gameOverMessage: string;
     public computerChoice: Choice;
     public userOutcome: Outcome;
-    public isGameOver = false;
     public isMessageShowing = false;
 
     constructor(
@@ -37,10 +37,6 @@ export class MainGameComponent {
             return this.onWin();
         }
         return this.onLose();
-    }
-
-    public goToMainMenu(): void {
-        this.router.navigateByUrl('main-menu');
     }
 
     public onDismissMessage(): void {
@@ -70,16 +66,9 @@ export class MainGameComponent {
     }
 
     public onGameOver(): void {
-        this.gameOverMessage = `You ${this.userModel.remainingLife === 0 ? 'Lose' : 'Win'}!`.toUpperCase();
-        this.isGameOver = true;
-        return;
-    }
-
-    public onRestart(): void {
         this.isMessageShowing = false;
-        this.isGameOver = false;
-        this.computerService.resetLife();
-        this.userService.resetLife();
+        const outcome = this.userModel.remainingLife === 0 ? lossOutcome : victoryOutcome;
+        this.router.navigateByUrl(`${gameOverRoute}/${outcome}`);
     }
 
     private isStrongerThan(firstChoice: Choice, secondChoice: Choice): boolean {

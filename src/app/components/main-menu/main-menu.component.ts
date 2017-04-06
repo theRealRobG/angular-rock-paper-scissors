@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { HumanService, ComputerService } from '../../services';
+import { mainGameRoute } from '../../constants';
 
 const DEFAULT_STARTING_LIFE = 3;
 
@@ -30,6 +31,6 @@ export class MainMenuComponent {
         this.humanService.setTotalLife(this.noOfLives);
         this.computerService.resetLife();
         this.humanService.resetLife();
-        this.router.navigateByUrl('main-game');
+        this.router.navigateByUrl(mainGameRoute);
     }
 }

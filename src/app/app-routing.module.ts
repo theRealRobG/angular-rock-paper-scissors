@@ -1,12 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { MainGameComponent, MainMenuComponent } from './components';
+import { MainGameComponent, MainMenuComponent, GameOverComponent } from './components';
+import { gameOverRouteParam, mainGameRoute, gameOverRoute, mainMenuRoute } from './constants';
 
 const routes: Routes = [
-    { path: '', redirectTo: '/main-menu', pathMatch: 'full' },
-    { path: 'main-menu', component: MainMenuComponent },
-    { path: 'main-game', component: MainGameComponent }
+    { path: '', redirectTo: `/${mainMenuRoute}`, pathMatch: 'full' },
+    { path: mainMenuRoute, component: MainMenuComponent },
+    { path: mainGameRoute, component: MainGameComponent },
+    { path: `${gameOverRoute}/:${gameOverRouteParam}`, component: GameOverComponent }
 ];
 
 @NgModule({
